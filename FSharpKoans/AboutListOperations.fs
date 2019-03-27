@@ -29,7 +29,7 @@ module ``14: List operations are so easy, you could make them yourself!`` =
     [<Test>]
     let ``01 Finding the length of a list, the hard way`` () =
         let length (xs : 'a list) : int =
-            __ // write a function to find the length of a list
+            xs.Length // write a function to find the length of a list
         length [9;8;7] |> should equal 3
         length [] |> should equal 0
         length ["Le Comte de Monte-Cristo"] |> should equal 1
@@ -38,7 +38,7 @@ module ``14: List operations are so easy, you could make them yourself!`` =
     // Hint: https://msdn.microsoft.com/en-us/library/ee340354.aspx
     [<Test>]
     let ``02 Finding the length of a list, the easy way`` () =
-        __ [9;8;5;8;45] |> should equal 5
+        List.length [9;8;5;8;45] |> should equal 5
 
     [<Test>]
     let ``03 Reversing a list, the hard way`` () =
@@ -52,10 +52,10 @@ module ``14: List operations are so easy, you could make them yourself!`` =
     // Hint: https://msdn.microsoft.com/en-us/library/ee340277.aspx
     [<Test>]
     let ``04 Reversing a list, the easy way`` () =
-        __ [9;8;7] |> should equal [7;8;9]
-        __ [] |> should equal []
-        __ [0] |> should equal [0]
-        __ [9;8;5;8;45] |> should equal [45;8;5;8;9]
+        List.rev [9;8;7] |> should equal [7;8;9]
+        List.rev [] |> should equal []
+        List.rev [0] |> should equal [0]
+        List.rev [9;8;5;8;45] |> should equal [45;8;5;8;9]
 
     [<Test>]
     let ``05 Fixed-function mapping, the hard way (part 1).`` () =

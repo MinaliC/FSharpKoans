@@ -6,30 +6,30 @@ module ``13: String manipulation`` =
     let ``01 Finding the length of a string`` () =
         let a = "calamari"
         let b = "It's-a me, Maaario!"
-        String.FILL_ME_IN a |> should equal 8
-        String.FILL_ME_IN b |> should equal 19
+        String.length a |> should equal 8
+        String.length b |> should equal 19
 
     [<Test>]
     let ``02 Getting a substring (Part 1).`` () =
         let a = "bright"
-        a.[1..] |> should equal __
+        a.[1..] |> should equal "right"
 
     [<Test>]
     let ``03 Getting a substring (Part 2).`` () =
         let a = "bright"
-        a.[..3] |> should equal __
+        a.[..3] |> should equal "bri"
 
     [<Test>]
     let ``04 Getting a substring (Part 3).`` () =
         let a = "bright"
-        a.[1..3] |> should equal __
+        a.[1..3] |> should equal "r"
 
     [<Test>]
     let ``05 Concatenating strings`` () =
         let a = ["hip"; "hip"; "hurray"]
-        String.FILL__ME_IN " " a |> should equal "hip hip hurray"
-        String.FILL__ME_IN __ __ |> should equal "hiphiphurray"
-        String.FILL__ME_IN __ __ |> should equal "hip! hip! hurray"
+        String.concat " " a |> should equal "hip hip hurray"
+        String.concat "" a |> should equal "hiphiphurray"
+        String.concat " !" a |> should equal "hip! hip! hurray"
 
     [<Test>]
     let ``06 Getting a string from an integer or float`` () =
@@ -48,22 +48,22 @@ module ``13: String manipulation`` =
 
     [<Test>]
     let ``07 String formatting: %s format specifier`` () =
-        let result = sprintf __ "perfect"
+        let result = sprintf "%s" "perfect"
         result |> should equal "Practice makes perfect."
 
     [<Test>]
     let ``08 String formatting: %d format specifier`` () =
-        let result = sprintf __ 9
+        let result = sprintf "%d%c" 9
         result |> should equal "9 planets, Sir, endlessly circle, Sir"
 
     [<Test>]
     let ``09 String formatting: %b format specifier`` () =
-        let result = sprintf __ true
+        let result = sprintf "%b" true
         result |> should equal "It's true, it is."
 
     [<Test>]
     let ``10 String formatting: %c format specifier`` () =
-        let result = sprintf __ 'X'
+        let result = sprintf "%c" 'X'
         result |> should equal "X marks the spot."
 
     // specify a precision using %.Nf, where N is an integer
