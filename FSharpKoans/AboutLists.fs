@@ -14,10 +14,10 @@ module ``12: I Have Here In My Hand A List`` =
    
     [<Test>]
     let ``02 Creating a list (Syntax 2).`` () =
-        let myList = __::__::__::__::[]
-        let myOtherList = __::__::__::[ __ ]
-        let myNextList = ["lily";"sunflower"]::__::__ // you may use [ and ] symbols on this line.
-        let myLastList = __::__::__ // DO NOT use [ or ] symbols on this line!
+        let myList = "apple"::"grape"::"pear"::"biscuit"::[]
+        let myOtherList = "orange"::"lemon"::"princess"::["queen" ]
+        let myNextList = "lily"::"sunflower"::["daisy"; "carrot"] // you may use [ and ] symbols on this line.
+        let myLastList = "naartjie"::"raisin"::myList // DO NOT use [ or ] symbols on this line!
         myList |> should equal [ "apple"; "grape"; "pear"; "biscuit" ]
         myOtherList |> should equal [ "orange"; "lemon"; "princess"; "queen" ]
         myNextList |> should equal ["lily"; "sunflower"; "daisy"; "carrot"]
@@ -43,7 +43,7 @@ module ``12: I Have Here In My Hand A List`` =
     let ``05 Pattern-matching a list (Part 1).`` () =
         let fruits = ["apple"; "peach"; "orange"; "watermelon"; "pineapple"; "tomato"]
         let a::_ = fruits
-        a |> should equal ["apple"; "peach"; "orange"; "watermelon"; "pineapple"; "tomato"]
+        a |> should equal "apple"
 
     [<Test>]
     let ``06 Pattern-matching a list (Part 2).`` () =
@@ -56,21 +56,21 @@ module ``12: I Have Here In My Hand A List`` =
     let ``07 Pattern-matching a list (Part 3).`` () =
         let fruits = ["apple"; "peach"; "orange"; "watermelon"; "pineapple"; "tomato"]
         let _::d::e = fruits
-        d |> should equal "pineapple"
-        e |> should equal "tomato"
+        d |> should equal "peach"
+        e |> should equal ["orange"; "watermelon";"pineapple"; "tomato"]
 
     [<Test>]
     let ``08 Pattern-matching a list (Part 4).`` () =
         let fruits = ["apple"; "peach"; "orange"; "watermelon"; "pineapple"; "tomato"]
         let f::_::_::g::_ = fruits
         f |> should equal "apple"
-        g |> should equal "pineapple"
+        g |> should equal "watermelon"
 
     [<Test>]
     let ``09 Pattern-matching a list (Part 5).`` () =
         let fruits = ["apple"; "peach"; "orange"; "watermelon"; "pineapple"; "tomato"]
         let _::_::_::h = fruits
-        h |> should equal "tomato"
+        h |> should equal ["watermelon"; "pineapple"; "tomato"]
 
     [<Test>]
     let ``10 Pattern-matching a list (Part 6).`` () =
@@ -88,7 +88,7 @@ module ``12: I Have Here In My Hand A List`` =
         let fruits = ["apple"; "peach"; "orange"; "watermelon"; "pineapple"; "tomato"]
         let _::o::_::[p;q;r] = fruits
         o |> should equal "peach"
-        p |> should equal "watermelon0"
+        p |> should equal "watermelon"
         q |> should equal "pineapple"
         r |> should equal "tomato"
 
@@ -107,4 +107,4 @@ module ``12: I Have Here In My Hand A List`` =
             | [a;b;c;d;e] -> "prune"
             | _::t::_::u::_ -> t + u
             | _ -> "fig"
-        k |> should equal "peachpineapple"
+        k |> should equal "peachwatermelon"

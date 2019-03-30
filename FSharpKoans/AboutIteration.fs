@@ -16,7 +16,9 @@ module ``05: To iterate is human; to recurse, divine`` =
                 | true -> converge (d+10) c (n+1)
                 | false -> converge (d - 1) c (n+1)
             | true -> n
+
         converge 3 10 0  |> should equal 4
+
 
     [<Test>]
     let ``02 Tail recursion stops a stack overflow from occurring`` () =
@@ -30,4 +32,6 @@ module ``05: To iterate is human; to recurse, divine`` =
                 | false -> inner (count+1) (acc-1)
             inner sq -1
 
+
         myfun 12 |> should equal -429981553
+
